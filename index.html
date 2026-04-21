@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobMatch AI — Smart Job Recommendations</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" onclick="showHome()">
+        <span class="logo-icon">🤖</span>
+        <span class="logo-text">JobMatch <span class="logo-ai">AI</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#" onclick="showHome()" class="nav-link active" id="navHome">Home</a>
+        <a href="#" onclick="scrollToSection('how-it-works')" class="nav-link">How it works</a>
+        <a href="#" onclick="scrollToSection('categories')" class="nav-link">Categories</a>
+      </div>
+      <button class="nav-cta" onclick="scrollToSection('search-section')">Get Started</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden" id="mobileMenu">
+      <a href="#" onclick="showHome(); closeMobileMenu()">Home</a>
+      <a href="#" onclick="scrollToSection('how-it-works'); closeMobileMenu()">How it works</a>
+      <a href="#" onclick="scrollToSection('categories'); closeMobileMenu()">Categories</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       PAGE: HOME
+  ══════════════════════════════════════════ -->
+  <div id="homePage">
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="hero-bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-badge">✨ AI-Powered Matching</div>
+        <h1 class="hero-title">
+          Find Your <span class="gradient-text">Perfect Job</span><br/>
+          with AI Precision
+        </h1>
+        <p class="hero-subtitle">
+          Enter your skills or upload your CV — our cosine similarity AI instantly ranks
+          the best-fit roles from 15+ job profiles across tech, data, design, and more.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToSection('search-section')">
+            🔍 Match by Skills
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('cv-section')">
+            📄 Upload My CV
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Job Roles</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Cosine Matching</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="section" id="how-it-works">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-badge">Process</div>
+          <h2 class="section-title">How JobMatch AI Works</h2>
+          <p class="section-subtitle">Three simple steps to find your ideal career match</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon">📝</div>
+            <div class="step-num">01</div>
+            <h3>Enter Your Skills</h3>
+            <p>Type your skills as a comma-separated list, or upload your CV and let AI extract them automatically.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🧠</div>
+            <div class="step-num">02</div>
+            <h3>AI Analyzes & Scores</h3>
+            <p>Our cosine similarity algorithm converts skills into vectors and calculates match scores against every job profile.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon">🎯</div>
+            <div class="step-num">03</div>
+            <h3>Get Ranked Results</h3>
+            <p>Receive your top job matches sorted by fit percentage, with missing skills highlighted and career tips included.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATEGORIES ── -->
+    <section class="section section-dark" id="categories">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-badge">Explore</div>
+          <h2 class="section-title">Job Categories</h2>
+          <p class="section-subtitle">Click a category to instantly search matching roles</p>
+        </div>
+        <div class="categories-grid">
+          <button class="cat-card" onclick="searchByCategory('python, sql, statistics, machine learning')">
+            <span class="cat-icon">📊</span>
+            <span class="cat-name">Data & Analytics</span>
+            <span class="cat-count">3 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('javascript, react, node.js, html, css')">
+            <span class="cat-icon">⚙️</span>
+            <span class="cat-name">Engineering</span>
+            <span class="cat-count">4 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('python, machine learning, tensorflow, pytorch')">
+            <span class="cat-icon">🧠</span>
+            <span class="cat-name">AI & ML</span>
+            <span class="cat-count">2 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('communication, strategy, leadership, agile')">
+            <span class="cat-icon">🚀</span>
+            <span class="cat-name">Product & Strategy</span>
+            <span class="cat-count">2 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('seo, ads, content, analytics, social media')">
+            <span class="cat-icon">📣</span>
+            <span class="cat-name">Marketing</span>
+            <span class="cat-count">2 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('docker, kubernetes, aws, linux, terraform')">
+            <span class="cat-icon">☁️</span>
+            <span class="cat-name">Infrastructure</span>
+            <span class="cat-count">2 roles</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('figma, user research, wireframing, prototyping')">
+            <span class="cat-icon">🎨</span>
+            <span class="cat-name">Design</span>
+            <span class="cat-count">1 role</span>
+          </button>
+          <button class="cat-card" onclick="searchByCategory('networking, linux, security, python, siem')">
+            <span class="cat-icon">🔒</span>
+            <span class="cat-name">Security</span>
+            <span class="cat-count">1 role</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SKILL SEARCH ── -->
+    <section class="section" id="search-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-badge">Skills Search</div>
+          <h2 class="section-title">Match by Skills</h2>
+          <p class="section-subtitle">Enter your skills and get AI-ranked job recommendations instantly</p>
+        </div>
+
+        <div class="search-box">
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="skillsInput"
+              placeholder="e.g. Python, SQL, Machine Learning, Communication"
+              autocomplete="off"
+            />
+            <button id="recommendBtn" class="search-btn">Find Jobs</button>
+          </div>
+          <div id="errorMsg" class="error-msg hidden"></div>
+          <div class="quick-chips">
+            <span class="chips-label">Quick fill:</span>
+            <button class="chip" data-skills="Python, SQL, Excel, Power BI">📊 Data</button>
+            <button class="chip" data-skills="JavaScript, React, Node.js, CSS">⚙️ Web Dev</button>
+            <button class="chip" data-skills="Python, Machine Learning, TensorFlow">🧠 AI/ML</button>
+            <button class="chip" data-skills="Communication, Leadership, Strategy, Agile">🚀 Product</button>
+            <button class="chip" data-skills="Docker, Kubernetes, AWS, Linux">☁️ DevOps</button>
+            <button class="chip" data-skills="Figma, User Research, Wireframing">🎨 Design</button>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="loader-inner">
+            <div class="spinner"></div>
+            <p>AI is analyzing your skills<span class="dots"></span></p>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsSection" class="hidden">
+          <div class="results-header">
+            <h3 id="resultsHeading"></h3>
+            <div id="userSkillsDisplay" class="user-skills-display"></div>
+          </div>
+          <div id="resultsGrid" class="results-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CV UPLOAD ── -->
+    <section class="section section-dark" id="cv-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-badge">CV Analysis</div>
+          <h2 class="section-title">Upload Your CV</h2>
+          <p class="section-subtitle">Let AI read your CV and find the best-matched jobs for your profile</p>
+        </div>
+
+        <div class="cv-container">
+          <!-- Upload zone -->
+          <div class="cv-upload-zone" id="cvDropZone">
+            <div class="upload-icon">📄</div>
+            <p class="upload-title">Drop your CV here</p>
+            <p class="upload-sub">Supports .txt files — or paste your CV text below</p>
+            <input type="file" id="cvFileInput" accept=".txt,.pdf" class="hidden" />
+            <button class="btn-outline" onclick="document.getElementById('cvFileInput').click()">
+              Choose File
+            </button>
+          </div>
+
+          <div class="cv-divider"><span>or</span></div>
+
+          <!-- Paste zone -->
+          <div class="cv-paste-zone">
+            <label class="paste-label">Paste CV Text</label>
+            <textarea
+              id="cvTextInput"
+              placeholder="Paste your CV / resume text here...&#10;&#10;Example:&#10;John Doe | Software Engineer&#10;Skills: Python, SQL, Machine Learning, TensorFlow&#10;Experience: 3 years at DataCorp..."
+              rows="8"
+            ></textarea>
+            <button class="btn-primary cv-submit-btn" id="cvSubmitBtn">
+              🤖 Analyze My CV
+            </button>
+          </div>
+        </div>
+
+        <div id="cvError" class="error-msg hidden" style="text-align:center;margin-top:16px;"></div>
+
+        <!-- CV Loader -->
+        <div id="cvLoader" class="loader hidden">
+          <div class="loader-inner">
+            <div class="spinner"></div>
+            <p>Reading your CV<span class="dots"></span></p>
+          </div>
+        </div>
+
+        <!-- CV Results -->
+        <div id="cvResultsSection" class="hidden" style="margin-top:40px;">
+          <div class="cv-extracted">
+            <h4>🔍 Skills extracted from your CV</h4>
+            <div id="cvExtractedSkills" class="skills-list"></div>
+          </div>
+          <div class="results-header" style="margin-top:32px;">
+            <h3 id="cvResultsHeading"></h3>
+          </div>
+          <div id="cvResultsGrid" class="results-grid"></div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end #homePage -->
+
+  <!-- ══════════════════════════════════════════
+       PAGE: JOB DETAIL
+  ══════════════════════════════════════════ -->
+  <div id="jobDetailPage" class="hidden">
+    <div class="detail-container">
+      <button class="back-btn" onclick="goBack()">← Back to Results</button>
+      <div id="jobDetailContent"></div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🤖</span>
+        <span class="logo-text">JobMatch <span class="logo-ai">AI</span></span>
+      </div>
+      <p class="footer-desc">AI-powered job matching using cosine similarity. Built with Node.js + Express.</p>
+      <div class="footer-tech">
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">Express</span>
+        <span class="tech-tag">Cosine Similarity</span>
+        <span class="tech-tag">Multer</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
